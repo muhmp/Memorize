@@ -12,35 +12,33 @@ import SwiftUI
 struct CardView : View {
     
     //define the faceup
-    var isFaceUp: Bool = true
+    @State var isFaceUp: Bool = true
     
     //Zstack
     var body: some View {
         ZStack {
+            //variable shape
+            let shape = RoundedRectangle(cornerRadius: 20)
             //if condition for face up
             if isFaceUp {
                 //RoundedRectangle 1 inside
                 RoundedRectangle(cornerRadius: 20)
-                    .fill()
-                    .foregroundColor(.white)
-                
-                //RoundedRectangle 2 outside
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(lineWidth:10)
-                Text("✈️")
-                    .font(.largeTitle)
+                    shape.fill().foregroundColor(.white)
+                    shape.stroke(lineWidth:3)
+                    Text("✈️").font(.largeTitle)
                 
             } else {
-                //RoundRectangle only
-                RoundedRectangle(cornerRadius: 20)
-                    .fill()
+                shape.fill()
             }
+        }
+        .onTapGesture{
+            isFaceUp = !isFaceUp
         }
     }
 }
 
 
-//Zstack
+//HStack
 struct ContentView: View {
     var body: some View {
         HStack{
