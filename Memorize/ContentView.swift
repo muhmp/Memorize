@@ -58,34 +58,44 @@ struct ContentView: View {
                 }
             }
             
-            //Button increase decrease with param action and label
-            
-            //HStack remove
+            //HStack
             HStack{
-                // Button for remove an emoji
-                Button(action:{
-                    emojiCount -= 1
-                },label:{
-                    VStack{
-                        Text("Remove")
-                        Text("Card")
-                    }
-                })
+                remove
+                Spacer()
+                add
+                //padding for the second button
+                .padding(.horizontal)
                 
-                // Button for adding an emoji
-                Button(action:{
-                    emojiCount += 1
-                },label:{
-                    VStack{
-                        Text("Add")
-                        Text("Card")
-                    }
-                })
             }
             
             .padding(.horizontal)
             .foregroundColor(.red)
         }
+    }
+    //Separate the remove card part
+    var remove : some View {
+        // Button for remove an emoji
+        Button(action:{
+            emojiCount -= 1
+        },label:{
+            VStack{
+                Text("Remove")
+                Text("Card")
+            }
+        })
+    }
+    
+    //Separate the add card part
+    var add : some View {
+        // Button for adding an emoji
+        Button(action:{
+            emojiCount += 1
+        },label:{
+            VStack{
+                Text("Add")
+                Text("Card")
+            }
+        })
     }
     
     
